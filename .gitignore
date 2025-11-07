@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pkl
+*.pth
+.env
+.vscode/
+.idea/
+*.ipynb
+*.log
+*.DS_Store
+*.exe
