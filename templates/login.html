@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>船舶轨迹预测系统 - 登录</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="background"></div>
+    <div class="login-container">
+        <h2>船舶轨迹预测系统</h2>
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+        <form action="/login" method="post">
+            <input type="text" name="username" placeholder="请输入用户名" required>
+            <input type="password" name="password" placeholder="请输入密码" required>
+            <button type="submit">登录</button>
+        </form>
+        <p>还没有账号？<a href="/register">注册</a></p>
+    </div>
+</body>
+</html>
