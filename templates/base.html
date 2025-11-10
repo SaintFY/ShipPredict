@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShipTrack 船舶轨迹预测系统</title>
+
+    <!-- 全局基础样式 -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- 子页面样式块 -->
+    {% block head %}{% endblock %}
+</head>
+
+<body style="margin:0;padding:0;overflow:hidden;background:linear-gradient(135deg,#1c1b3a,#282850);font-family:'Segoe UI',sans-serif;">
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

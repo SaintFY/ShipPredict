@@ -1,0 +1,119 @@
+/* ========== 通用布局 ========== */
+.mode-container {
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(135deg, rgba(20, 20, 50, 0.95), rgba(40, 40, 80, 0.95));
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+}
+
+/* 玻璃拟态风格 */
+.glass {
+  background: rgba(88, 86, 214, 0.15);
+  border: 1px solid rgba(180, 178, 255, 0.35);
+  box-shadow: 0 0 25px rgba(88, 86, 214, 0.25);
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+}
+
+/* ========== 左侧面板 ========== */
+.left-panel {
+  width: 320px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: #fff;
+}
+
+.left-panel h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #cfd3ff;
+  margin-bottom: 20px;
+}
+
+.section {
+  margin-bottom: 25px;
+}
+
+.section label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #d0d0ff;
+  display: block;
+  margin-bottom: 8px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  outline: none;
+}
+
+/* ========== 按钮样式 ========== */
+.btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  transition: 0.3s;
+  text-shadow: 0 0 3px rgba(0,0,0,0.3);
+}
+
+.btn.run {
+  background: linear-gradient(135deg, #5b5bff, #7f53ac);
+}
+
+.btn.export {
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+}
+
+.btn.back {
+  background: linear-gradient(135deg, #607d8b, #455a64);
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* ========== 右侧地图 ========== */
+.map-panel {
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+  border-left: 1px solid rgba(180, 178, 255, 0.35);
+}
+
+/* ========== 自适应 ========== */
+@media (max-width: 1000px) {
+  .mode-container {
+    flex-direction: column;
+  }
+
+  .left-panel {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid rgba(180, 178, 255, 0.35);
+  }
+
+  #map {
+    height: 70vh;
+  }
+}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="mode-container">
+  <div class="left-panel glass">
+    <h2>⚙️ 标准模式</h2>
+
+    <div class="section">
+      <label>预测步长：</label>
+      <select id="stepSelect">
+        <option value="15">15步</option>
+        <option value="30">30步</option>
+        <option value="45">45步</option>
+        <option value="60">60步</option>
+      </select>
+    </div>
+
+    <div class="section">
+      <button class="btn run" id="runPredict">一键融合预测</button>
+      <button class="btn back" onclick="window.location.href='/mode'">返回</button>
+      <button class="btn export" id="exportCSV">导出结果</button>
+    </div>
+  </div>
+
+  <div class="map-panel">
+    <div id="map"></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/static/js/standard.js"></script>
+{% endblock %}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>高级模式 - 船舶轨迹预测系统</title>
+  <link rel="stylesheet" href="/static/css/advanced.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+
+<body>
+<div class="mode-container">
+  <!-- 左侧控制面板 -->
+  <div class="left-panel">
+    <h2>⚙️ 高级模式</h2>
+
+    <label>数据来源：</label>
+    <select id="data-source">
+      <option value="builtin">平台自带数据</option>
+    </select>
+
+    <label>预测步长：</label>
+    <select id="step">
+      <option value="15">15步</option>
+      <option value="30">30步</option>
+      <option value="45">45步</option>
+      <option value="60">60步</option>
+    </select>
+
+    <label>样本编号选择：</label>
+    <input id="sample-index" type="text" placeholder="例如：0 或 0,1,2" value="0">
+
+    <div class="section">
+      <label>模型选择：</label>
+      <div class="model-grid">
+        <label><input type="checkbox" class="model-checkbox" value="LSTM"> LSTM</label>
+        <label><input type="checkbox" class="model-checkbox" value="BiLSTM"> BiLSTM</label>
+        <label><input type="checkbox" class="model-checkbox" value="GRU"> GRU</label>
+        <label><input type="checkbox" class="model-checkbox" value="BiGRU"> BiGRU</label>
+        <label><input type="checkbox" class="model-checkbox" value="Transformer"> Transformer</label>
+        <label><input type="checkbox" class="model-checkbox" value="LSTM-Attention"> LSTM-Attention</label>
+        <label><input type="checkbox" class="model-checkbox" value="GRU-Attention"> GRU-Attention</label>
+      </div>
+    </div>
+
+    <button id="run-btn" class="btn run">运行预测</button>
+    <button id="fusion-btn" class="btn fusion">融合预测</button>
+
+    <div class="export-group">
+      <h4>结果导出：</h4>
+      <button id="export-csv" class="btn green">导出 CSV</button>
+      <button id="export-pdf" class="btn orange">导出 PDF</button>
+    </div>
+  </div>
+
+  <!-- 右侧地图面板 -->
+  <div class="map-panel">
+    <div id="map"></div>
+    <div class="legend" id="legend">
+      <h4>图例</h4>
+      <div><span style="background:#00BFFF"></span> 输入轨迹</div>
+      <div><span style="background:#4169E1"></span> LSTM</div>
+      <div><span style="background:#00FFFF"></span> BiLSTM</div>
+      <div><span style="background:#00FF7F"></span> GRU</div>
+      <div><span style="background:#FF69B4"></span> BiGRU</div>
+      <div><span style="background:#FF8C00"></span> Transformer</div>
+      <div><span style="background:#FFD700"></span> LSTM-Attention</div>
+      <div><span style="background:#FF00FF"></span> GRU-Attention</div>
+      <div><span style="background:#FFFFFF"></span> 融合结果</div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ 保证 JS 在最后加载 -->
+<script src="/static/js/advanced.js"></script>
+</body>
+</html>
