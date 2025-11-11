@@ -1,144 +1,264 @@
-body {
-    margin: 0;
-    background: #0a0a1a;
-    color: white;
-    font-family: "Microsoft YaHei", sans-serif;
-    overflow: hidden;
-}
+/* ===============================
+   高级模式样式（布局回归 + 按钮上色版）
+   目标：还原第二张图布局 + 上传区彩色渐变
+================================ */
 
 .mode-container {
-    display: flex;
-    height: 100vh;
-    background: linear-gradient(135deg, rgba(20,20,60,0.95), rgba(40,40,80,0.95));
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(135deg, rgba(22,26,48,.96), rgba(34,36,70,.95));
+  overflow: hidden;
 }
 
 .left-panel {
-    width: 320px;
-    height: 100%;
-    padding: 25px 20px;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(180deg, rgba(88,86,214,0.25), rgba(88,86,214,0.1));
-    border-right: 1px solid rgba(180,178,255,0.3);
-    backdrop-filter: blur(10px);
+  width: 320px;
+  height: 100%;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  background: linear-gradient(180deg, rgba(88,86,214,.22), rgba(18,20,35,.35));
+  border-right: 1px solid rgba(180,178,255,.25);
+  box-sizing: border-box;
 }
 
-.left-panel h2 {
-    font-size: 22px;
-    font-weight: 700;
-    color: #e0e6ff;
-    margin-bottom: 25px;
-    display: flex;
-    align-items: center;
+/* ===== 标题 ===== */
+.title-center {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: #e8eaff;
+  margin: 10px 0 18px;
+  letter-spacing: .5px;
 }
 
-.section {
-    margin-bottom: 25px;
-}
-
+/* ===== 输入区 ===== */
 label {
-    font-size: 15px;
-    color: #b0b4ff;
-    margin-bottom: 8px;
-    display: block;
+  font-size: 13px;
+  color: #cfd1ff;
+  display: block;
+  margin: 10px 0 6px;
 }
 
-select {
-    width: 100%;
-    padding: 6px 8px;
-    border-radius: 6px;
-    border: 1px solid rgba(180,178,255,0.4);
-    background: rgba(40,40,80,0.7);
-    color: #e6e6ff;
-    font-size: 14px;
+select,
+input[type="text"] {
+  width: 100%;
+  height: 38px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  outline: none;
+  font-size: 14px;
+  transition: all .2s ease;
+}
+select:hover, input[type="text"]:hover {
+  border-color: #7f83ff;
+  box-shadow: 0 0 4px rgba(127,131,255,.3);
 }
 
-select option {
-    background: #1c1c3c;
-    color: #e0e0ff;
+/* ===== 上传区 ===== */
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 10px;
 }
 
+.upload-section .btn {
+  width: 100%;
+  height: 40px;
+  font-size: 15px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s ease;
+}
+
+/* ✅ 下载示例：科技蓝渐变 */
+.btn.sample {
+  background: linear-gradient(135deg, #3a7bff, #5c8eff);
+  box-shadow: 0 3px 8px rgba(70,130,255,.25);
+}
+.btn.sample:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+/* ✅ 上传数据：青绿渐变 */
+.btn.upload {
+  background: linear-gradient(135deg, #00c6b4, #00a3a3);
+  box-shadow: 0 3px 8px rgba(0,200,180,.3);
+}
+.btn.upload:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+/* 禁用状态 */
+.btn.disabled {
+  background: rgba(255,255,255,.08) !important;
+  color: #cfd1ff !important;
+  opacity: .6;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* ===== 模型选择区 ===== */
 .model-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5px 15px;
-    font-size: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 14px;
+  margin-top: 6px;
+}
+.model-grid label {
+  font-size: 14px;
+  color: #fff;
+  line-height: 1.3;
 }
 
-input[type="checkbox"] {
-    margin-right: 6px;
-    transform: scale(1.1);
+/* ===== 通用按钮 ===== */
+.btn {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  height: 42px;
+  transition: all .2s ease;
+}
+.btn:active { transform: scale(.985); }
+
+/* ===== 操作按钮区 ===== */
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+}
+.actions .btn { width: 100%; }
+
+/* ✅ 运行预测：蓝紫渐变 */
+.btn.run {
+  background: linear-gradient(135deg, #6a7bff, #8a63ff);
+  box-shadow: 0 4px 12px rgba(110,139,255,.28);
+}
+.btn.run:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+/* ✅ 融合预测：粉紫渐变 */
+.btn.fusion {
+  background: linear-gradient(135deg, #b06af7, #d48cff);
+  box-shadow: 0 4px 12px rgba(176,106,247,.3);
+}
+.btn.fusion:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+/* 禁用状态 */
+.btn.run:disabled,
+.btn.fusion:disabled {
+  background: rgba(255,255,255,.10);
+  color: rgba(255,255,255,.65);
+  cursor: not-allowed;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,.2);
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 10px;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
+/* ===== 导出区 ===== */
+.export-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto !important;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.export-group h4 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  color: #e8eaff;
 }
 
-#run-btn { background: linear-gradient(135deg, #5b5bff, #7543cf); }
-#fusion-btn { background: linear-gradient(135deg, #b54cff, #7034ff); }
-#fusion-btn:disabled { background: rgba(120,120,120,0.3); cursor: not-allowed; }
-#export-csv { background: linear-gradient(135deg, #28a745, #1e7e34); }
-#export-pdf { background: linear-gradient(135deg, #ff5f6d, #ffc371); }
-button:hover:not(:disabled) { transform: scale(1.04); opacity: 0.9; }
+/* ✅ 导出按钮：绿色渐变 */
+.export-group .btn {
+  height: 40px;
+  background: linear-gradient(135deg, #1ec963, #16a34a);
+  box-shadow: 0 4px 10px rgba(30,201,99,.3);
+  font-weight: 700;
+}
+.export-group .btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.export-group .btn:active { transform: translateY(0); filter: brightness(.95); }
 
-.map-panel { flex: 1; height: 100%; position: relative; }
-#map { height: 100%; width: 100%; border-left: 1px solid rgba(180,178,255,0.25); }
+/* ===== 地图与图例 ===== */
+.map-panel { flex: 1; position: relative; }
+#map {
+  height: 100%;
+  width: 100%;
+  border-left: 1px solid rgba(180,178,255,.28);
+}
 
 .legend {
-    position: absolute;
-    bottom: 20px;
-    right: 25px;
-    background: rgba(15,15,30,0.85);
-    padding: 10px 15px;
-    border-radius: 10px;
-    color: #d0d0ff;
-    font-size: 13px;
-    border: 1px solid rgba(88,86,214,0.4);
-    box-shadow: 0 0 12px rgba(0,0,80,0.4);
-    z-index: 9999;          /* ✅ 新增 */
-    pointer-events: none;   /* ✅ 防止图例挡住地图交互 */
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  background: rgba(88,86,214,.25);
+  border: 1px solid rgba(180,178,255,.35);
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  padding: 8px 10px;
+  color: #fff;
 }
-
-
+.legend h4 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: #d7d9ff;
+}
 .legend div {
-    display: flex;
-    align-items: center;
-    margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  margin: 3px 0;
 }
 .legend span {
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    border-radius: 3px;
-    margin-right: 6px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 6px;
+  border: 2px solid rgba(255,255,255,.22);
 }
 
-.toast-msg {
-    position: fixed;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(60,60,100,0.95);
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-size: 14px;
-    color: #fff;
-    box-shadow: 0 0 8px rgba(88,86,214,0.4);
-    z-index: 9999;
-    animation: fadeInOut 3s ease forwards;
+/* ===== 修复下拉列表可读性（不改布局） ===== */
+/* 列表弹出层里的每一项：浅底深字 */
+select option,
+select optgroup {
+  color: #111 !important;           /* 选项文字深色 */
+  background: #ffffff !important;   /* 选项面板浅底 */
 }
 
-@keyframes fadeInOut {
-    0% { opacity: 0; transform: translate(-50%,20px); }
-    10% { opacity: 1; transform: translate(-50%,0); }
-    90% { opacity: 1; transform: translate(-50%,0); }
-    100% { opacity: 0; transform: translate(-50%,20px); }
+/* 部分浏览器在 focus 时会继承控件前景色，再明确一次 */
+select:focus option,
+select:focus optgroup {
+  color: #111 !important;
+  background: #ffffff !important;
+}
+
+/* 如果有禁用项，给个明显一点的灰度 */
+select option:disabled {
+  color: #999 !important;
+  background: #f5f5f5 !important;
+}
+
+/* 兼容旧 Edge/Chrome（有时会把选中项渲染成浅色） */
+select option:checked {
+  color: #111 !important;
+}
+
+/* 维持下拉框本体仍为深色主题（不影响已存在样式） */
+select {
+  color: #fff;          /* 保持收起时的白字 */
+  background: rgba(255,255,255,.08);
 }

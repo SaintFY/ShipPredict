@@ -1,31 +1,65 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="mode-container">
-  <div class="left-panel glass">
-    <h2>⚙️ 标准模式</h2>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>标准模式 - 船舶轨迹预测系统</title>
+  <link rel="stylesheet" href="/static/css/standard.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+  <div class="mode-container">
+    <!-- 左侧控制面板 -->
+    <div class="left-panel">
+      <h2 class="title-center">⚙️ 标准模式</h2>
 
-    <div class="section">
+      <label>数据来源：</label>
+      <select id="data-source">
+        <option value="builtin" selected>平台自带数据</option>
+        <option value="user">用户自定义数据</option>
+      </select>
+
+      <div class="upload-section">
+        <button id="download-example" class="btn sample">⬇️ 下载示例文件</button>
+        <label for="user-file" class="btn upload" id="upload-data-label">
+          ⬆️ 上传数据
+          <input id="user-file" type="file" accept=".csv,.pkl" hidden />
+        </label>
+      </div>
+
       <label>预测步长：</label>
-      <select id="stepSelect">
-        <option value="15">15步</option>
+      <select id="step">
+        <option value="15" selected>15步</option>
         <option value="30">30步</option>
         <option value="45">45步</option>
         <option value="60">60步</option>
       </select>
+
+      <label>样本编号选择：</label>
+      <input id="sample-index" type="text" placeholder="例如：0 或 0,2,5" value="0" />
+
+      <div class="actions">
+        <button id="fusion-btn" class="btn fusion">融合预测</button>
+      </div>
+
+      <div class="export-group">
+        <h4>结果导出：</h4>
+        <button id="export-csv" class="btn green">导出 CSV</button>
+      </div>
     </div>
 
-    <div class="section">
-      <button class="btn run" id="runPredict">一键融合预测</button>
-      <button class="btn back" onclick="window.location.href='/mode'">返回</button>
-      <button class="btn export" id="exportCSV">导出结果</button>
+    <!-- 右侧地图 -->
+    <div class="map-panel">
+      <div id="map"></div>
+
+      <div class="legend" id="legend">
+        <h4>图例</h4>
+        <div><span style="background:#00BFFF"></span> 输入轨迹</div>
+        <div><span style="background:#FFFFFF;border:1px solid #888"></span> 融合结果</div>
+      </div>
     </div>
   </div>
 
-  <div class="map-panel">
-    <div id="map"></div>
-  </div>
-</div>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="/static/js/standard.js"></script>
-{% endblock %}
+  <script src="/static/js/standard.js"></script>
+</body>
+</html>

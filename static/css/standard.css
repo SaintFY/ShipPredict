@@ -1,119 +1,225 @@
-/* ========== 通用布局 ========== */
+/* ===============================
+   标准模式样式（2025-11 优化版）
+================================ */
+
 .mode-container {
   display: flex;
   height: 100vh;
-  background: linear-gradient(135deg, rgba(20, 20, 50, 0.95), rgba(40, 40, 80, 0.95));
+  background: linear-gradient(135deg, rgba(22,26,48,.96), rgba(34,36,70,.95));
   overflow: hidden;
-  font-family: 'Segoe UI', sans-serif;
-  color: #fff;
 }
 
-/* 玻璃拟态风格 */
-.glass {
-  background: rgba(88, 86, 214, 0.15);
-  border: 1px solid rgba(180, 178, 255, 0.35);
-  box-shadow: 0 0 25px rgba(88, 86, 214, 0.25);
-  border-radius: 18px;
-  backdrop-filter: blur(10px);
-}
-
-/* ========== 左侧面板 ========== */
+/* ===== 左侧面板 ===== */
 .left-panel {
   width: 320px;
-  padding: 30px;
+  height: 100%;
+  padding: 18px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   color: #fff;
+  background: linear-gradient(180deg, rgba(88,86,214,.22), rgba(18,20,35,.35));
+  border-right: 1px solid rgba(180,178,255,.25);
+  box-sizing: border-box;
 }
 
-.left-panel h2 {
+/* ===== 标题 ===== */
+.title-center {
+  text-align: center;
   font-size: 22px;
-  font-weight: 600;
-  color: #cfd3ff;
-  margin-bottom: 20px;
+  font-weight: 700;
+  color: #e8eaff;
+  margin: 12px 0 18px;
+  letter-spacing: .5px;
 }
 
-.section {
-  margin-bottom: 25px;
-}
-
-.section label {
-  font-size: 15px;
-  font-weight: 500;
-  color: #d0d0ff;
+/* ===== 输入标签 ===== */
+label {
+  font-size: 13px;
+  color: #cfd1ff;
   display: block;
-  margin-bottom: 8px;
+  margin: 10px 0 6px;
 }
 
-select {
+/* ===== 输入与选择控件 ===== */
+select,
+input[type="text"] {
   width: 100%;
-  padding: 10px;
+  height: 38px;
+  padding: 0 10px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
+  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(255,255,255,.1);
+  color: #fff;
   outline: none;
 }
+select option {
+  background: #2e3358;
+  color: #fff;
+}
+select:focus, input[type="text"]:focus {
+  border-color: #7f83ff;
+  box-shadow: 0 0 4px rgba(127,131,255,.3);
+}
 
-/* ========== 按钮样式 ========== */
-.btn {
+/* ===== 上传与下载区域 ===== */
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 14px;
+}
+.upload-section .btn {
   width: 100%;
-  margin-top: 10px;
-  padding: 12px;
+  height: 38px;
+  font-size: 14px;
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #fff;
   cursor: pointer;
-  color: white;
-  font-size: 15px;
-  font-weight: 500;
-  transition: 0.3s;
-  text-shadow: 0 0 3px rgba(0,0,0,0.3);
+  transition: all .2s ease;
+  text-align: center;
 }
 
-.btn.run {
-  background: linear-gradient(135deg, #5b5bff, #7f53ac);
+/* 下载示例：蓝色渐变 */
+.btn.sample {
+  background: linear-gradient(135deg, #3a7bff, #5793ff);
+  box-shadow: 0 3px 8px rgba(70,130,255,.25);
+}
+.btn.sample:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+/* 上传数据：青绿渐变 */
+.btn.upload {
+  background: linear-gradient(135deg, #00c6b4, #00a3a3);
+  box-shadow: 0 3px 8px rgba(0,200,180,.25);
+}
+.btn.upload:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+/* 禁用状态 */
+.btn.disabled {
+  background: rgba(255,255,255,.08) !important;
+  color: #cfd1ff !important;
+  opacity: .6;
+  cursor: not-allowed;
 }
 
-.btn.export {
-  background: linear-gradient(135deg, #4caf50, #2e7d32);
+/* ===== 融合预测按钮 ===== */
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0;
 }
-
-.btn.back {
-  background: linear-gradient(135deg, #607d8b, #455a64);
+.btn.fusion {
+  width: 100%;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #b06af7, #d48cff);
+  box-shadow: 0 4px 12px rgba(176,106,247,.3);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all .2s ease;
 }
+.btn.fusion:hover { filter: brightness(1.1); transform: translateY(-1px); }
 
-.btn:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
+/* ===== 导出区域 ===== */
+.export-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,.08);
 }
-
-/* ========== 右侧地图 ========== */
-.map-panel {
-  flex: 1;
-  height: 100%;
-  position: relative;
+.export-group h4 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  color: #e8eaff;
 }
+.export-group .btn {
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(135deg, #1ec963, #16a34a);
+  box-shadow: 0 4px 10px rgba(30,201,99,.3);
+  font-weight: 700;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.export-group .btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
 
+/* ===== 地图与图例 ===== */
+.map-panel { flex: 1; position: relative; }
 #map {
   height: 100%;
   width: 100%;
-  border-left: 1px solid rgba(180, 178, 255, 0.35);
+  border-left: 1px solid rgba(180,178,255,.28);
+}
+.legend {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  background: rgba(88,86,214,.25);
+  border: 1px solid rgba(180,178,255,.35);
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  padding: 8px 10px;
+  color: #fff;
+}
+.legend h4 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: #d7d9ff;
+}
+.legend div {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  margin: 3px 0;
+}
+.legend span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 6px;
+  border: 2px solid rgba(255,255,255,.22);
 }
 
-/* ========== 自适应 ========== */
-@media (max-width: 1000px) {
-  .mode-container {
-    flex-direction: column;
-  }
+/* —— 仅做文字垂直居中，不改变按钮外形 —— */
 
-  .left-panel {
-    width: 100%;
-    height: auto;
-    border-bottom: 1px solid rgba(180, 178, 255, 0.35);
-  }
-
-  #map {
-    height: 70vh;
-  }
+/* 下载示例按钮：假定高度是 38px，按你的样式写成相同的值 */
+#download-example {
+  display: inline-block;   /* 让 line-height 生效且不影响外观 */
+  height: 38px;            /* 保持按钮原有高度 */
+  line-height: 38px;       /* 关键：行高=高度，实现垂直居中 */
+  padding-top: 0;
+  padding-bottom: 0;
+  text-align: center;      /* 水平居中 */
+  white-space: nowrap;     /* 避免换行导致的偏移 */
 }
+
+/* 上传数据按钮（它是 label）同理处理 */
+#upload-data-label {
+  display: inline-block;
+  height: 38px;
+  line-height: 38px;       /* 关键：垂直居中 */
+  padding-top: 0;
+  padding-bottom: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* 保险：隐藏在 label 里的 input 不参与布局（一般已经 hidden，这里再稳妥处理一次） */
+#upload-data-label > input[type="file"] {
+  display: none !important;
+}
+
